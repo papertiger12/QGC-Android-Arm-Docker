@@ -101,6 +101,9 @@ RUN /tmp/build/install-openssl-android-clang.sh \
 # Copy self-signed key
 COPY /others/selfsigned.keystore /tmp/build/
 
+COPY scripts/install-gstreamer.sh /tmp/build/
+RUN /tmp/build/install-gstreamer.sh
+
 USER user
 WORKDIR /home/user
 ENV HOME /home/user
