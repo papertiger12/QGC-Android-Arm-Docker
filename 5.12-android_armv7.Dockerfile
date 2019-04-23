@@ -98,6 +98,9 @@ RUN /tmp/build/install-openssl-android-clang.sh \
     && echo 'user ALL=NOPASSWD: ALL' > /etc/sudoers.d/user \
     && chown -R user:user $ANDROID_HOME
 
+# Copy self-signed key
+COPY /others/selfsigned.keystore /tmp/build/
+
 USER user
 WORKDIR /home/user
 ENV HOME /home/user
