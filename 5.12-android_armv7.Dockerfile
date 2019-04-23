@@ -104,6 +104,8 @@ COPY /others/selfsigned.keystore /tmp/build/
 COPY scripts/install-gstreamer.sh /tmp/build/
 RUN /tmp/build/install-gstreamer.sh
 
+COPY scripts/build-qgc.sh /home/user/
+
 USER user
 WORKDIR /home/user
 ENV HOME /home/user
