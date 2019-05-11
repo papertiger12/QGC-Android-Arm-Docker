@@ -109,3 +109,4 @@ COPY scripts/build-qgc.sh /home/user/
 USER user
 WORKDIR /home/user
 ENV HOME /home/user
+CMD ["/home/user/build-qgc.sh"]
