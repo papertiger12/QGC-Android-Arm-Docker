@@ -2,7 +2,7 @@
 # Image: a12e/docker-qt:5.12-android_armv7
 
 FROM ubuntu:18.04
-MAINTAINER Aurélien Brooke <dev@abrooke.fr>
+MAINTAINER Willian Galvani <williangalvani@gmail.com>
 
 ARG NDK_VERSION=r18b
 ARG OPENSSL_VERSION=1.0.2r
