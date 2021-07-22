@@ -21,4 +21,5 @@ curl -Lo ndk.zip "https://dl.google.com/android/repository/android-ndk-${NDK_VER
 unzip -q ndk.zip
 mv android-ndk-* $ANDROID_NDK_ROOT
 chmod -R +rX $ANDROID_NDK_ROOT
+rm ndk.zip
 rm -rf /tmp/android 

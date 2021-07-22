@@ -26,3 +26,4 @@ rm -fv /tmp/sdk-tools.zip
 yes | sdkmanager --licenses
 sdkmanager --update
 sdkmanager --verbose "platforms;${SDK_PLATFORM}" "build-tools;${SDK_BUILD_TOOLS}" ${SDK_PACKAGES}
+rm -r /opt/android-sdk/emulator
