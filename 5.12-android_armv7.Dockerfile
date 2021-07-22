@@ -70,6 +70,7 @@ RUN dpkg --add-architecture i386 && apt update && apt full-upgrade -y && apt ins
     libstdc++6:i386 \
     libz1:i386 \
     patch \
+    wget \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
