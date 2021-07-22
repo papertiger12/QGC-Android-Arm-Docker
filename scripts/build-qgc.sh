@@ -12,7 +12,7 @@ cd build
 qmake -r .. ANDROID_EXTRA_LIBS+=$ANDROID_DEV/lib/libcrypto.so ANDROID_EXTRA_LIBS+=$ANDROID_DEV/lib/libssl.so
 make -j$(nproc)
 make install INSTALL_ROOT=dist
-androiddeployqt --input android-libQGroundControl.so-deployment-settings.json --output dist/ --android-platform android-21 --deployment bundled --gradle --release
+androiddeployqt --verbose --input android-libQGroundControl.so-deployment-settings.json --output dist/ --android-platform android-29 --deployment bundled --gradle --release
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /tmp/build/selfsigned.keystore dist/build/outputs/apk/dist-release-unsigned.apk qgc-self-signed -storepass potato
 
 echo "---------------------------------------------------------------------------------------------"
