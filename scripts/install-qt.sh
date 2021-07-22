@@ -21,6 +21,6 @@ set -e #quit on error
 mkdir /tmp/qt
 sudo apt update && sudo apt install python3 python3-pip -y
 pip3 install aqtinstall
-sudo aqt install --outputdir ${QT_PATH} ${QT_VERSION} linux android ${QT_PLATFORM}
+sudo aqt install --outputdir ${QT_PATH} ${QT_VERSION} linux android ${QT_PLATFORM} -m qtcharts
 find "${QT_PATH}" -mindepth 1 -maxdepth 1 ! -name "${QT_VERSION}" -exec echo 'Cleaning Qt SDK: {}' \; -exec rm -r '{}' \;
 rm -rf /tmp/qt
