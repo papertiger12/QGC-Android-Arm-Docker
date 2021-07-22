@@ -74,8 +74,6 @@ RUN dpkg --add-architecture i386 && apt update && apt full-upgrade -y && apt ins
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY 3rdparty/* /tmp/build/
-
 # Download & unpack Qt toolchain
 COPY scripts/install-qt.sh /tmp/build/
 RUN /tmp/build/install-qt.sh
