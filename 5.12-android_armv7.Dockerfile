@@ -71,6 +71,7 @@ RUN dpkg --add-architecture i386 && apt update && apt full-upgrade -y && apt ins
     libz1:i386 \
     patch \
     wget \
+    xz-utils \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -88,7 +89,7 @@ RUN /tmp/build/install-android-ndk.sh
 
 # Download, build & install OpenSSL for Android
 COPY scripts/install-openssl-android-clang.sh /tmp/build/
-RUN /tmp/build/install-openssl-android-clang.sh \    
+RUN /tmp/build/install-openssl-android-clang.sh \
 # Reconfigure locale
     && locale-gen en_US.UTF-8 && dpkg-reconfigure locales \
 # Add group & user, and make the SDK directory writable
