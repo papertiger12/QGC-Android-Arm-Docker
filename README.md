@@ -3,16 +3,21 @@ These Docker images allow you to very easily build [QGroundControl](https://gith
 QGroundControl Android Docker images
 ==========================
 
-Qt 5.12.3 LTS
-* `a12e/docker-qt:5.12-android_armv7` (Platform 21, NDK r18b [clang], OpenSSL 1.0.2r)
-* Other platform need updates.
+This builds an .apk file with a self-signed key for QGroundControl.
 
-Android example
----------------
+Build from master
+docker run -it williangalvani/qgc-android-build
 
-`docker run -it --rm a12e/docker-qt:5.12-android_armv7`
+Build from local folder
+docker run -it --mount type=bind,source=YOUR-QGC-ROOT,target=/home/user/qgroundcontrol williangalvani/qgc-android-build
 
-```sh
-./build-qgc.sh
-```
-When it is done, `exit` and then copy the on-screen command to copy the apk to the current folder.
+Copy .apk from container
+docker cp \$(docker ps -alq):/home/user/qgroundcontrol.apk .
+
+or from qgroundcontrol/build/dist/build/outputs/apk/dist-release-unsigned.apk if you build from local folder
+
+Remove a previous version(if any) of qgc in android device:
+adb uninstall org.mavlink.qgroundcontrol
+
+Install to your device
+adb install qgroundcontrol.apk
