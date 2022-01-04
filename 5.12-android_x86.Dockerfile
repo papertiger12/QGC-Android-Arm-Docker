@@ -4,12 +4,12 @@
 FROM ubuntu:18.04
 MAINTAINER Aurélien Brooke <dev@abrooke.fr>
 
-ARG NDK_VERSION=r18b
+ARG NDK_VERSION=r20
 ARG OPENSSL_VERSION=1.0.2r
-ARG QT_VERSION=5.12.3
+ARG QT_VERSION=5.12.10
 ARG SDK_BUILD_TOOLS=28.0.3
 ARG SDK_PACKAGES="tools platform-tools"
-ARG SDK_PLATFORM=android-21
+ARG SDK_PLATFORM=android-29
 
 ENV \
     ANDROID_HOME=/opt/android-sdk \
@@ -73,7 +73,7 @@ RUN dpkg --add-architecture i386 && apt update && apt full-upgrade -y && apt ins
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY 3rdparty/* /tmp/build/
+# COPY 3rdparty/* /tmp/build/
 
 # Download & unpack Qt toolchain
 COPY scripts/install-qt.sh /tmp/build/
@@ -98,6 +98,15 @@ RUN /tmp/build/install-openssl-android-clang.sh \
     && echo 'user ALL=NOPASSWD: ALL' > /etc/sudoers.d/user \
     && chown -R user:user $ANDROID_HOME
 
+# Copy self-signed key
+COPY /others/selfsigned.keystore /tmp/build/
+
+COPY scripts/install-gstreamer.sh /tmp/build/
+RUN /tmp/build/install-gstreamer.sh
+
+COPY scripts/build-qgc.sh /home/user/
+
 USER user
 WORKDIR /home/user
 ENV HOME /home/user
+CMD ["/home/user/build-qgc.sh"]
