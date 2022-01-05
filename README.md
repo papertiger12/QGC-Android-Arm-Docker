@@ -30,12 +30,12 @@ adb install qgroundcontrol.apk
 
 ```
 // arm64
-docker image build . -f .\5.12-android_arm64_v8a.Dockerfile
+docker image build . -f .\5.12-android_arm64_v8a.Dockerfile -t local-qgc-64
 
 // get id of your image
 docker image ls
 
-docker run -it --mount type=bind,source=<QGC_PATH>,target=/home/user/qgroundcontrol <IMAGE_ID>
+docker run -it --mount type=bind,source=<QGC_PATH>,target=/home/user/qgroundcontrol local-qgc-64
 ```
 
 - https://github.com/Williangalvani/QGC-Android-Arm-Docker
